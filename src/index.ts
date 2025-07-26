@@ -15,6 +15,7 @@ import { handleSequentialThinkingTool } from "./thirdPartyWrappers/sequentialThi
 import { handleContext7Tool } from "./thirdPartyWrappers/context7.js";
 import { handleBrowserToolsTool } from "./thirdPartyWrappers/browserTools.js";
 import { handleMondayTool } from "./thirdPartyWrappers/monday.js";
+import { handleJustGoingViralTool } from "./thirdPartyWrappers/justGoingViral.js";
 
 console.error("Starting JustGoingViral consolidated MCP server...");
 
@@ -157,6 +158,15 @@ server.setRequestHandler(CallToolRequestSchema, async (request) => {
     
     if (mondayToolNames.includes(name)) {
       return await handleMondayTool(name, args);
+    }
+
+    // Route JustGoingViral tools
+    const justGoingViralToolNames = [
+      'contacts', 'notes', 'messages', 'mail', 'reminders', 'webSearch', 'calendar', 'maps'
+    ];
+
+    if (justGoingViralToolNames.includes(name)) {
+      return await handleJustGoingViralTool(name, args);
     }
 
     // Handle Apple MCP tools (simplified version - focusing on key tools)
