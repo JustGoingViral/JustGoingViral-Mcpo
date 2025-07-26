@@ -1,0 +1,30 @@
+{
+  "name": "JustGoingViral",
+  "version": "1.0.0",
+  "description": "A consolidated MCP server for Cline.",
+  "main": "dist/index.js",
+  "scripts": {
+    "build": "tsc",
+    "start": "node dist/index.js"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.16.0",
+    "@supabase/supabase-js": "^2.0.0",
+    "fs-extra": "^11.0.0",
+    "run-applescript": "^7.0.0",
+    "axios": "^1.0.0",
+    "@modelcontextprotocol/server-filesystem": "latest",
+    "@modelcontextprotocol/server-memory": "latest",
+    "@modelcontextprotocol/server-github": "latest",
+    "@modelcontextprotocol/server-postgres": "latest",
+    "@modelcontextprotocol/server-sequential-thinking": "latest",
+    "@upstash/context7-mcp": "latest",
+    "@agentdeskai/browser-tools-mcp": "latest",
+    "@mondaydotcomorg/monday-api-mcp": "latest",
+    "apple-mcp": "latest"
+  },
+  "devDependencies": {
+    "@types/fs-extra": "^11.0.4",
+    "typescript": "^5.0.0"
+  }
+}
