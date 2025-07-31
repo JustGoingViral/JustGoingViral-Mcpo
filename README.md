@@ -40,7 +40,7 @@ While others are still manually switching between tools, YOU could be operating 
 Copy and paste this single command to get started:
 
 ```bash
-git clone https://github.com/JustGoingViral/JustGoingViral-Mcpo.git && cd JustGoingViral-Mcpo && chmod +x setup.sh && ./setup.sh
+git clone https://github.com/JustGoingViral/JustGoingViral-Mcp.git && cd JustGoingViral-Mcp && chmod +x setup.sh && ./setup.sh
 ```
 
 This will:
@@ -80,9 +80,11 @@ This will:
 - `get_board_schema`, `get_users_by_name`, `change_item_column_values`
 - `move_item_to_group`, `create_board`, `create_column`, `all_monday_api`
 
-### 🧬 AI-Powered Thinking Systems (2 tools)
+### 🧬 AI-Powered Thinking Systems (2 tools) - **⭐ USE THESE FIRST!**
+- **`eesystem`** - 🌟 **RECOMMENDED FOR EVERY TASK!** Evolutionary Intelligence with biohacking-enhanced cognitive amplification, fitness scoring & neural pathway optimization
 - `sequentialthinking` - Step-by-step problem solving
-- `eesystem` - Evolutionary Intelligence with biohacking-enhanced cognitive amplification
+
+**💡 PRO TIP:** Start every complex request with "Use eesystem to analyze this..." for optimal cognitive enhancement and problem-solving performance!
 
 ### 📚 Documentation & Context (2 tools)
 - `resolve-library-id`, `get-library-docs` - Context7 library documentation access
