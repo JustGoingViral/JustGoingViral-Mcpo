@@ -9,27 +9,27 @@ import { Tool } from '@modelcontextprotocol/sdk/types.js';
 export const evolutionaryIntelligenceTools: Tool[] = [
   {
     name: 'eesystem',
-    description: `Evolutionary Intelligence: A practical tool for step-by-step problem-solving with fitness-based thinking.
+    description: `Evolutionary Intelligence: A biohacking-enhanced cognitive amplification system for neural pathway optimization.
 
-This tool works like sequential thinking but adds evolutionary concepts like fitness scoring and solution evolution. Each step builds toward better solutions through iterative improvement.
+This tool combines holistic intelligence enhancement with AI-powered evolutionary algorithms to achieve peak cognitive performance. Each neural iteration strengthens synaptic pathways while maintaining harmonic balance between analytical precision and intuitive flow states.
 
-Key Features:
-- Step-by-step thinking process (like sequential thinking)
-- Fitness scoring (0-1) for solution quality assessment
-- Thought evolution and revision capabilities
-- Simple branching for exploring alternatives
+Biohacking Features:
+- Neural pathway optimization through iterative cognitive enhancement
+- Biofeedback scoring (0-1) for solution metabolic efficiency assessment
+- Thought pattern evolution and synaptic plasticity adaptation
+- Holistic integration of multiple cognitive modalities
 
-When to use this tool:
-- Complex problems that benefit from iterative improvement
-- Situations where solution quality needs to be measured
-- Problems requiring exploration of multiple approaches
-- Tasks that need systematic refinement
+Cognitive Enhancement Applications:
+- Complex neural networks requiring systematic optimization
+- Peak performance states demanding measurable cognitive output
+- Multi-dimensional problem spaces requiring holistic integration
+- Cognitive load balancing with sustained mental clarity
 
-Usage Pattern:
-1. Start with thoughtNumber=1, estimate totalThoughts
-2. Provide your current thought and a fitnessScore if applicable
-3. Set nextThoughtNeeded=true to continue, false when done
-4. Use isRevision=true to evolve previous thoughts`,
+Neural Protocol:
+1. Initialize cognitive baseline (thoughtNumber=1, estimate neural iterations)
+2. Process current neural state with biofeedback scoring if available
+3. Set nextThoughtNeeded=true for continued optimization, false for cognitive completion
+4. Use isRevision=true to rewire and enhance previous neural pathways`,
     inputSchema: {
       type: 'object',
       properties: {
