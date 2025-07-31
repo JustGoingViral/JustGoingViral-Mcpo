@@ -16,18 +16,48 @@ This will:
 3. Make the setup script executable
 4. Run the automated setup (installs dependencies, builds project, shows instructions)
 
-## Features
+## 🌟 Features - 68 Powerful Tools
 
-This server consolidates the following MCP servers:
-- Apple MCP (contacts, notes, messages, mail, reminders, calendar, maps, web search)
-- Filesystem operations
-- Memory/Knowledge graph
-- GitHub integration
-- PostgreSQL database operations
-- Sequential thinking
-- Context7 documentation
-- Browser tools
-- Monday.com integration
+**JustGoingViral is a mega-consolidated MCP server providing 68 tools across 10+ categories:**
+
+### 🍎 Apple Ecosystem Integration (8 tools)
+- `contacts`, `notes`, `messages`, `mail`, `reminders`, `webSearch`, `calendar`, `maps`
+
+### 📁 Advanced Filesystem Operations (11 tools) 
+- `read_file`, `read_multiple_files`, `write_file`, `edit_file`, `create_directory`
+- `list_directory`, `list_directory_with_sizes`, `directory_tree`, `move_file`
+- `search_files`, `get_file_info`, `list_allowed_directories`
+
+### 🧠 Memory & Knowledge Graph (9 tools)
+- `create_entities`, `create_relations`, `add_observations`, `delete_entities`
+- `delete_observations`, `delete_relations`, `read_graph`, `search_nodes`, `open_nodes`
+
+### 🐙 GitHub Integration (9 tools)
+- `create_or_update_file`, `search_repositories`, `create_repository`, `get_file_contents`
+- `push_files`, `create_issue`, `create_pull_request`, `list_issues`, `search_code`
+
+### 🌐 Browser & Web Tools (14 tools)
+- `getConsoleLogs`, `getConsoleErrors`, `getNetworkErrors`, `getNetworkLogs`
+- `takeScreenshot`, `getSelectedElement`, `wipeLogs`, `runAccessibilityAudit`
+- `runPerformanceAudit`, `runSEOAudit`, `runNextJSAudit`, `runDebuggerMode`
+- `runAuditMode`, `runBestPracticesAudit`
+
+### 📊 Monday.com Project Management (11 tools)
+- `delete_item`, `get_board_items_by_name`, `create_item`, `create_update`
+- `get_board_schema`, `get_users_by_name`, `change_item_column_values`
+- `move_item_to_group`, `create_board`, `create_column`, `all_monday_api`
+
+### 🧬 AI-Powered Thinking Systems (2 tools)
+- `sequentialthinking` - Step-by-step problem solving
+- `eesystem` - Evolutionary Intelligence with biohacking-enhanced cognitive amplification
+
+### 📚 Documentation & Context (2 tools)
+- `resolve-library-id`, `get-library-docs` - Context7 library documentation access
+
+### 🗄️ Database Operations (1 tool)
+- `query` - PostgreSQL database operations
+
+**Total: 68 tools providing comprehensive automation, development, and productivity capabilities**
 
 ## Installation
 
