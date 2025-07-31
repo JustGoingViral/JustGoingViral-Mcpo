@@ -1,6 +1,7 @@
 {
-  "name": "JustGoingViral",
+"name": "JustGoingViral",
   "version": "1.0.0",
+  "type": "module",
   "description": "A consolidated MCP server for Cline.",
   "main": "dist/index.js",
   "scripts": {

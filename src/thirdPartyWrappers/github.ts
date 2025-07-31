@@ -3,7 +3,7 @@
  * Forwards calls to the underlying package at runtime
  */
 
-import { Tool } from '@modelcontextprotocol/sdk/types';
+import { Tool } from '@modelcontextprotocol/sdk/types.js';
 
 // Define tool schemas that match the GitHub server
 export const githubTools: Tool[] = [

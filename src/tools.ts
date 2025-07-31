@@ -11,8 +11,7 @@ import { sequentialThinkingTools } from './thirdPartyWrappers/sequentialThinking
 import { context7Tools } from './thirdPartyWrappers/context7.js';
 import { browserToolsTools } from './thirdPartyWrappers/browserTools.js';
 import { mondayTools } from './thirdPartyWrappers/monday.js';
-import { justGoingViralTools } from './thirdPartyWrappers/justGoingViral.js';
-
+import { evolutionaryIntelligenceTools } from './thirdPartyWrappers/evolutionaryIntelligence.js';
 const tools = [
   ...localAppleTools,
   ...filesystemTools,
@@ -23,7 +22,7 @@ const tools = [
   ...context7Tools,
   ...browserToolsTools,
   ...mondayTools,
-  ...justGoingViralTools
+  ...evolutionaryIntelligenceTools,
 ];
 
 export default tools;

@@ -15,19 +15,20 @@ import { handleSequentialThinkingTool } from "./thirdPartyWrappers/sequentialThi
 import { handleContext7Tool } from "./thirdPartyWrappers/context7.js";
 import { handleBrowserToolsTool } from "./thirdPartyWrappers/browserTools.js";
 import { handleMondayTool } from "./thirdPartyWrappers/monday.js";
+import { handleEvolutionaryIntelligenceTool } from "./thirdPartyWrappers/evolutionaryIntelligence.js";
 import { handleJustGoingViralTool } from "./thirdPartyWrappers/justGoingViral.js";
 
 console.error("Starting JustGoingViral consolidated MCP server...");
 
 // Lazy loading of Apple MCP modules
-let contacts: typeof import('./utils/contacts').default | null = null;
-let notes: typeof import('./utils/notes').default | null = null;
-let message: typeof import('./utils/message').default | null = null;
-let mail: typeof import('./utils/mail').default | null = null;
-let reminders: typeof import('./utils/reminders').default | null = null;
-let webSearch: typeof import('./utils/webSearch').default | null = null;
-let calendar: typeof import('./utils/calendar').default | null = null;
-let maps: typeof import('./utils/maps').default | null = null;
+let contacts: typeof import('./utils/contacts.js').default | null = null;
+let notes: typeof import('./utils/notes.js').default | null = null;
+let message: typeof import('./utils/message.js').default | null = null;
+let mail: typeof import('./utils/mail.js').default | null = null;
+let reminders: typeof import('./utils/reminders.js').default | null = null;
+let webSearch: typeof import('./utils/webSearch.js').default | null = null;
+let calendar: typeof import('./utils/calendar.js').default | null = null;
+let maps: typeof import('./utils/maps.js').default | null = null;
 
 // Helper function for lazy module loading
 async function loadAppleModule<T extends 'contacts' | 'notes' | 'message' | 'mail' | 'reminders' | 'webSearch' | 'calendar' | 'maps'>(moduleName: T): Promise<any> {
@@ -158,6 +159,11 @@ server.setRequestHandler(CallToolRequestSchema, async (request) => {
     
     if (mondayToolNames.includes(name)) {
       return await handleMondayTool(name, args);
+    }
+
+    // Route Evolutionary Intelligence tools
+    if (name === 'eesystem') {
+      return await handleEvolutionaryIntelligenceTool(name, args);
     }
 
     // Route JustGoingViral tools
