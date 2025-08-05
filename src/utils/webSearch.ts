@@ -40,6 +40,11 @@ async function makeRequest(
   let lastError: Error | null = null;
   
   for (let attempt = 0; attempt <= retries; attempt++) {
+    const controller = new AbortController();
+    const timeoutId = options.timeout
+      ? setTimeout(() => controller.abort(), options.timeout)
+      : undefined;
+
     try {
       const response = await fetch(url, {
         method: options.method || 'GET',
@@ -49,32 +54,35 @@ async function makeRequest(
           'Accept-Language': 'en-US,en;q=0.5',
           ...(options.headers || {})
         },
-        signal: options.timeout ? AbortSignal.timeout(options.timeout) : undefined
+        signal: controller.signal
       });
 
       if (!response.ok) {
         throw new Error(`Request failed with status code ${response.status}`);
       }
 
+      if (timeoutId) clearTimeout(timeoutId);
       return response.text();
     } catch (error) {
       lastError = error instanceof Error ? error : new Error(String(error));
-      
+
+      if (timeoutId) clearTimeout(timeoutId);
+
       // Don't retry if it's an aborted request or timeout
-      if (error instanceof DOMException && error.name === 'AbortError') {
+      if (error instanceof Error && error.name === 'AbortError') {
         break;
       }
-      
+
       // Only retry if we have attempts left
       if (attempt === retries) {
         break;
       }
-      
+
       // Wait before retry (exponential backoff)
       await new Promise(resolve => setTimeout(resolve, 1000 * 2 ** attempt));
     }
   }
-  
+
   throw lastError || new Error('Request failed');
 }
 
