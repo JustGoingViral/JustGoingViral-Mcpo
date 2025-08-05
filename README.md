@@ -1,8 +1,8 @@
 # 🚀 **STOP!** Are You Still Juggling 10+ Different AI Tools and Servers? 
 
-## **Introducing JustGoingViral: The ULTIMATE 68-in-1 MCP Server That's About to 10X Your AI Productivity!**
+## **Introducing JustGoingViral: The ULTIMATE 69-in-1 MCP Server That's About to 10X Your AI Productivity!**
 
-**✨ What if I told you that in the next 5 minutes, you could have access to 68 powerful AI tools, all perfectly integrated, all working together seamlessly, and all controlled from ONE single interface that works with ANY AI system?**
+**✨ What if I told you that in the next 5 minutes, you could have access to 69 powerful AI tools, all perfectly integrated, all working together seamlessly, and all controlled from ONE single interface that works with ANY AI system?**
 
 ### 🔥 **Here's What Industry Leaders Are Already Discovering:**
 
@@ -14,7 +14,7 @@
 
 ### **💎 Why Smart Developers Are Making The Switch:**
 
-✅ **68 Premium Tools** - Everything from filesystem operations to evolutionary AI thinking  
+✅ **69 Premium Tools** - Everything from filesystem operations to evolutionary AI thinking
 ✅ **Universal MCP Compatibility** - Works with ANY MCP client: Claude Desktop, Cline, ChatGPT connectors, custom AI systems  
 ✅ **Zero Configuration Headaches** - Plug-and-play with all MCP-compatible platforms  
 ✅ **Apple Ecosystem Mastery** - Native macOS integration others charge premium for  
@@ -33,7 +33,7 @@ While others are still manually switching between tools, YOU could be operating 
 
 # JustGoingViral MCP Server
 
-**Technical Overview:** A mega-consolidated MCP server compatible with ANY MCP client (Claude Desktop, Cline, ChatGPT connectors, custom AI systems) that integrates 68 tools from 10+ specialized servers into a single, powerful interface.
+**Technical Overview:** A mega-consolidated MCP server compatible with ANY MCP client (Claude Desktop, Cline, ChatGPT connectors, custom AI systems) that integrates 69 tools from 10+ specialized servers into a single, powerful interface.
 
 ## 🚀 Quick Setup (One Command)
 
@@ -49,9 +49,9 @@ This will:
 3. Make the setup script executable
 4. Run the automated setup (installs dependencies, builds project, shows instructions)
 
-## 🌟 Features - 68 Powerful Tools
+## 🌟 Features - 69 Powerful Tools
 
-**JustGoingViral is a mega-consolidated MCP server providing 68 tools across 10+ categories:**
+**JustGoingViral is a mega-consolidated MCP server providing 69 tools across 10+ categories:**
 
 ### 🍎 Apple Ecosystem Integration (8 tools)
 - `contacts`, `notes`, `messages`, `mail`, `reminders`, `webSearch`, `calendar`, `maps`
@@ -92,7 +92,10 @@ This will:
 ### 🗄️ Database Operations (1 tool)
 - `query` - PostgreSQL database operations
 
-**Total: 68 tools providing comprehensive automation, development, and productivity capabilities**
+### 🧰 Utility (1 tool)
+- `server_info` - get server version and tool count
+
+**Total: 69 tools providing comprehensive automation, development, and productivity capabilities**
 
 ## Installation
 

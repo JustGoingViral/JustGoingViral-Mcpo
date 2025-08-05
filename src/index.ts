@@ -92,9 +92,19 @@ server.setRequestHandler(CallToolRequestSchema, async (request) => {
       throw new Error("No arguments provided");
     }
 
+    if (name === "server_info") {
+      return {
+        content: [{
+          type: "text",
+          text: `JustGoingViral v1.0.0 with ${tools.length} tools`
+        }],
+        isError: false
+      };
+    }
+
     // Route filesystem tools to their wrapper
     const filesystemToolNames = [
-      'read_file', 'read_multiple_files', 'write_file', 'edit_file', 
+      'read_file', 'read_multiple_files', 'write_file', 'edit_file',
       'create_directory', 'list_directory', 'list_directory_with_sizes',
       'directory_tree', 'move_file', 'search_files', 'get_file_info', 'list_allowed_directories'
     ];
