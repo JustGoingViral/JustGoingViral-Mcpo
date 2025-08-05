@@ -178,7 +178,12 @@ server.setRequestHandler(CallToolRequestSchema, async (request) => {
     ];
 
     if (justGoingViralToolNames.includes(name)) {
-      return await handleJustGoingViralTool(name, args);
+      const result = await handleJustGoingViralTool(name, args);
+      if (!result.isError) {
+        return result;
+      }
+      // If the external JustGoingViral package is unavailable or fails,
+      // fall through to the local implementations below.
     }
 
     // Handle Apple MCP tools (simplified version - focusing on key tools)
