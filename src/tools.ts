@@ -12,6 +12,7 @@ import { context7Tools } from './thirdPartyWrappers/context7.js';
 import { browserToolsTools } from './thirdPartyWrappers/browserTools.js';
 import { mondayTools } from './thirdPartyWrappers/monday.js';
 import { evolutionaryIntelligenceTools } from './thirdPartyWrappers/evolutionaryIntelligence.js';
+import { serverHealthTools } from './thirdPartyWrappers/serverHealth.js';
 const tools = [
   ...localAppleTools,
   ...filesystemTools,
@@ -23,6 +24,7 @@ const tools = [
   ...browserToolsTools,
   ...mondayTools,
   ...evolutionaryIntelligenceTools,
+  ...serverHealthTools,
 ];
 
 export default tools;

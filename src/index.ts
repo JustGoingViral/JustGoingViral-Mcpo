@@ -17,6 +17,7 @@ import { handleBrowserToolsTool } from "./thirdPartyWrappers/browserTools.js";
 import { handleMondayTool } from "./thirdPartyWrappers/monday.js";
 import { handleEvolutionaryIntelligenceTool } from "./thirdPartyWrappers/evolutionaryIntelligence.js";
 import { handleJustGoingViralTool } from "./thirdPartyWrappers/justGoingViral.js";
+import { handleServerHealthTool } from "./thirdPartyWrappers/serverHealth.js";
 
 console.error("Starting JustGoingViral consolidated MCP server...");
 
@@ -159,6 +160,11 @@ server.setRequestHandler(CallToolRequestSchema, async (request) => {
     
     if (mondayToolNames.includes(name)) {
       return await handleMondayTool(name, args);
+    }
+
+    // Route server health tool
+    if (name === 'server_health') {
+      return await handleServerHealthTool(name, args);
     }
 
     // Route Evolutionary Intelligence tools
