@@ -33,6 +33,7 @@
   "scripts": {
     "build": "tsc",
     "start": "node dist/index.js",
+    "dev": "node --loader ts-node/esm src/index.ts",
     "add-mcp-server": "ts-node scripts/add-mcp-server.ts"
   },
   "dependencies": {
