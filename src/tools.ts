@@ -13,7 +13,13 @@ import { browserToolsTools } from './thirdPartyWrappers/browserTools.js';
 import { mondayTools } from './thirdPartyWrappers/monday.js';
 import { evolutionaryIntelligenceTools } from './thirdPartyWrappers/evolutionaryIntelligence.js';
 import { serverHealthTools } from './thirdPartyWrappers/serverHealth.js';
+import { modelcontextprotocolServerFilesystemTools } from './thirdPartyWrappers/modelcontextprotocolServerFilesystem.js';
+
+import { modelcontextprotocolServerMemoryTools } from './thirdPartyWrappers/modelcontextprotocolServerMemory.js';
+
 const tools = [
+  ...modelcontextprotocolServerMemoryTools,
+  ...modelcontextprotocolServerFilesystemTools,
   ...localAppleTools,
   ...filesystemTools,
   ...memoryTools,

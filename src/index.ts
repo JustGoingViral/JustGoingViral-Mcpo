@@ -15,6 +15,8 @@ import { handleSequentialThinkingTool } from "./thirdPartyWrappers/sequentialThi
 import { handleContext7Tool } from "./thirdPartyWrappers/context7.js";
 import { handleBrowserToolsTool } from "./thirdPartyWrappers/browserTools.js";
 import { handleMondayTool } from "./thirdPartyWrappers/monday.js";
+import { handleModelcontextprotocolServerMemoryTool } from "./thirdPartyWrappers/modelcontextprotocolServerMemory.js";
+import { handleModelcontextprotocolServerFilesystemTool } from "./thirdPartyWrappers/modelcontextprotocolServerFilesystem.js";
 import { handleEvolutionaryIntelligenceTool } from "./thirdPartyWrappers/evolutionaryIntelligence.js";
 import { handleJustGoingViralTool } from "./thirdPartyWrappers/justGoingViral.js";
 import { handleServerHealthTool } from "./thirdPartyWrappers/serverHealth.js";
@@ -149,6 +151,24 @@ server.setRequestHandler(CallToolRequestSchema, async (request) => {
     
     if (browserToolNames.includes(name)) {
       return await handleBrowserToolsTool(name, args);
+    }
+
+    // Route @modelcontextprotocol/server-filesystem tools
+    const modelcontextprotocolServerFilesystemToolNames = [
+      // TODO: Add tool names here
+    ];
+
+    if (modelcontextprotocolServerFilesystemToolNames.includes(name)) {
+      return await handleModelcontextprotocolServerFilesystemTool(name, args);
+    }
+
+    // Route @modelcontextprotocol/server-memory tools
+    const modelcontextprotocolServerMemoryToolNames = [
+      // TODO: Add tool names here
+    ];
+
+    if (modelcontextprotocolServerMemoryToolNames.includes(name)) {
+      return await handleModelcontextprotocolServerMemoryTool(name, args);
     }
 
     // Route Monday.com tools

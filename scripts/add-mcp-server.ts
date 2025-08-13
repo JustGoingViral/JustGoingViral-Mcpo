@@ -1,8 +1,10 @@
-#!/usr/bin/env node
-
 import { execSync } from 'child_process';
 import fs from 'fs-extra';
-import path from 'path';
+import path, { dirname } from 'path';
+import { fileURLToPath } from 'url';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
 
 const main = async () => {
   const repoUrl = process.argv[2];
@@ -18,14 +20,30 @@ const main = async () => {
   if (fs.existsSync(tempDir)) {
     fs.removeSync(tempDir);
   }
-  execSync(`git clone ${repoUrl} ${tempDir}`);
+  fs.mkdirSync(tempDir, { recursive: true });
+
+  let serverPath = tempDir;
+  // Check if the URL is a subdirectory
+  if (repoUrl.includes('/tree/main/')) {
+    const [repo, dir] = repoUrl.split('/tree/main/');
+    const repoPath = `${repo}.git`;
+    execSync(`cd ${tempDir} && git init && git remote add -f origin ${repoPath} && git config core.sparseCheckout true && echo "${dir}" >> .git/info/sparse-checkout && git pull origin main`);
+    serverPath = path.join(tempDir, dir);
+  } else {
+    execSync(`git clone ${repoUrl} ${tempDir}`);
+  }
 
   // 2. Read the package.json to get the server name
-  const packageJsonPath = path.join(tempDir, 'package.json');
+  let packageJsonPath = path.join(serverPath, 'package.json');
   if (!fs.existsSync(packageJsonPath)) {
-    console.error('The repository does not contain a package.json file.');
-    fs.removeSync(tempDir);
-    process.exit(1);
+    packageJsonPath = path.join(tempDir, 'package.json');
+    if (!fs.existsSync(packageJsonPath)) {
+      console.error('The repository does not contain a package.json file in the root or subdirectory.');
+      fs.removeSync(tempDir);
+      process.exit(1);
+    }
+    // If package.json is in the root, the server path is the temp dir
+    serverPath = tempDir;
   }
   const packageJson = fs.readJsonSync(packageJsonPath);
   const serverName = packageJson.name;
@@ -73,7 +91,7 @@ export async function handle${camelCaseServerName.charAt(0).toUpperCase() + came
   fs.writeFileSync(wrapperPath, wrapperTemplate.trim());
 
   // 4. Populate the tool schemas
-  const toolsFilePath = path.join(tempDir, 'src/tools.ts');
+  const toolsFilePath = path.join(serverPath, 'src/tools.ts');
   if (fs.existsSync(toolsFilePath)) {
     const toolsFileContent = fs.readFileSync(toolsFilePath, 'utf-8');
     const toolDefinitions = toolsFileContent.match(/const \w+?: Tool = {[\s\S]*?};/g);
