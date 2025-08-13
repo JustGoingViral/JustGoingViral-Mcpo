@@ -14,8 +14,8 @@ Create a REST API gateway that exposes the MCP tools as HTTP endpoints that Chat
 
 #### Step 1: Install JustGoingViral MCP Server
 ```bash
-git clone https://github.com/JustGoingViral/JustGoingViral-Mcp.git
-cd JustGoingViral-Mcp
+git clone https://github.com/JustGoingViral/JustGoingViral-Mcpo.git
+cd JustGoingViral-Mcpo
 npm install && npm run build
 ```
 
@@ -97,7 +97,7 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
 
 ### Step 1: Run Your MCP Server
 ```bash
-cd JustGoingViral-Mcp
+cd JustGoingViral-Mcpo
 npm start
 ```
 

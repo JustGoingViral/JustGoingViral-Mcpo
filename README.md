@@ -40,7 +40,7 @@ While others are still manually switching between tools, YOU could be operating 
 Copy and paste this single command to get started:
 
 ```bash
-git clone https://github.com/JustGoingViral/JustGoingViral-Mcp.git && cd JustGoingViral-Mcp && chmod +x setup.sh && ./setup.sh
+git clone https://github.com/JustGoingViral/JustGoingViral-Mcpo.git && cd JustGoingViral-Mcpo && chmod +x setup.sh && ./setup.sh
 ```
 
 This will:
@@ -107,6 +107,11 @@ This will:
 3. Build the project:
    ```bash
    npm run build
+   ```
+
+4. Start the server:
+   ```bash
+   npm start
    ```
 
 ## Adding a New MCP Server
