@@ -155,7 +155,18 @@ server.setRequestHandler(CallToolRequestSchema, async (request) => {
 
     // Route @modelcontextprotocol/server-filesystem tools
     const modelcontextprotocolServerFilesystemToolNames = [
-      // TODO: Add tool names here
+      'read_file',
+      'read_multiple_files',
+      'write_file',
+      'edit_file',
+      'create_directory',
+      'list_directory',
+      'list_directory_with_sizes',
+      'directory_tree',
+      'move_file',
+      'search_files',
+      'get_file_info',
+      'list_allowed_directories'
     ];
 
     if (modelcontextprotocolServerFilesystemToolNames.includes(name)) {
@@ -164,7 +175,15 @@ server.setRequestHandler(CallToolRequestSchema, async (request) => {
 
     // Route @modelcontextprotocol/server-memory tools
     const modelcontextprotocolServerMemoryToolNames = [
-      // TODO: Add tool names here
+      'create_entities',
+      'create_relations',
+      'add_observations',
+      'delete_entities',
+      'delete_observations',
+      'delete_relations',
+      'read_graph',
+      'search_nodes',
+      'open_nodes'
     ];
 
     if (modelcontextprotocolServerMemoryToolNames.includes(name)) {
