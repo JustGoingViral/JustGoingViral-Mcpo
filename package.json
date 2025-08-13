@@ -36,25 +36,25 @@
     "add-mcp-server": "ts-node scripts/add-mcp-server.ts"
   },
   "dependencies": {
-    "@modelcontextprotocol/sdk": "^1.16.0",
-    "@supabase/supabase-js": "^2.0.0",
-    "fs-extra": "^11.0.0",
-    "run-applescript": "^7.0.0",
-    "axios": "^1.0.0",
-    "@modelcontextprotocol/server-filesystem": "latest",
-    "@modelcontextprotocol/server-memory": "latest",
-    "@modelcontextprotocol/server-github": "latest",
-    "@modelcontextprotocol/server-postgres": "latest",
-    "@modelcontextprotocol/server-sequential-thinking": "latest",
-    "@upstash/context7-mcp": "latest",
-    "@agentdeskai/browser-tools-mcp": "latest",
-    "@mondaydotcomorg/monday-api-mcp": "latest",
-    "apple-mcp": "latest"
+    "@modelcontextprotocol/sdk": "1.17.0",
+    "@supabase/supabase-js": "2.53.0",
+    "fs-extra": "11.3.0",
+    "run-applescript": "7.0.0",
+    "axios": "1.11.0",
+    "@modelcontextprotocol/server-filesystem": "2025.7.1",
+    "@modelcontextprotocol/server-memory": "2025.4.25",
+    "@modelcontextprotocol/server-github": "2025.4.8",
+    "@modelcontextprotocol/server-postgres": "0.6.2",
+    "@modelcontextprotocol/server-sequential-thinking": "2025.7.1",
+    "@upstash/context7-mcp": "1.0.14",
+    "@agentdeskai/browser-tools-mcp": "1.2.1",
+    "@mondaydotcomorg/monday-api-mcp": "1.4.2",
+    "apple-mcp": "0.2.7"
   },
   "devDependencies": {
-    "@types/fs-extra": "^11.0.4",
-    "@types/node": "^20.14.9",
-    "ts-node": "^10.9.2",
-    "typescript": "^5.0.0"
+    "@types/fs-extra": "11.0.4",
+    "@types/node": "20.19.9",
+    "ts-node": "10.9.2",
+    "typescript": "5.8.3"
   }
 }
