@@ -160,6 +160,12 @@ After running the automation script, you may need to:
 
 This server is designed to be used with Cline. Configure it in your MCP settings to use all the consolidated tools.
 
+To see a list of all available tools from the command line, run:
+
+```bash
+npm run list-tools
+```
+
 ## Development
 
 ### Project Structure
