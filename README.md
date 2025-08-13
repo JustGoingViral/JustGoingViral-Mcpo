@@ -108,6 +108,14 @@ This will:
    ```bash
    npm run build
    ```
+4. Start the server in development mode:
+   ```bash
+   npm run dev
+   ```
+   This runs the server directly from the TypeScript source. To run the compiled version instead, use:
+   ```bash
+   npm start
+   ```
 
 ## Adding a New MCP Server
 
