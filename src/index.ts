@@ -452,4 +452,8 @@ async function main() {
   }
 }
 
-main();
+if (process.env.NODE_ENV !== "test") {
+  main();
+}
+
+export { server };
