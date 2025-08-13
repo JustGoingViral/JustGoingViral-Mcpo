@@ -18,14 +18,14 @@ This guide will walk you through connecting the JustGoingViral MCP server to Cla
 
 ### Option A: Quick Install (Recommended)
 ```bash
-git clone https://github.com/JustGoingViral/JustGoingViral-Mcp.git && cd JustGoingViral-Mcp && chmod +x setup.sh && ./setup.sh
+git clone https://github.com/JustGoingViral/JustGoingViral-Mcpo.git && cd JustGoingViral-Mcpo && chmod +x setup.sh && ./setup.sh
 ```
 
 ### Option B: Manual Install
 1. **Clone the repository:**
    ```bash
-   git clone https://github.com/JustGoingViral/JustGoingViral-Mcp.git
-   cd JustGoingViral-Mcp
+   git clone https://github.com/JustGoingViral/JustGoingViral-Mcpo.git
+   cd JustGoingViral-Mcpo
    ```
 
 2. **Install dependencies:**
@@ -74,17 +74,17 @@ If the file doesn't exist, create it. Add this configuration:
   "mcpServers": {
     "JustGoingViral": {
       "command": "node",
-      "args": ["/FULL/PATH/TO/JustGoingViral-Mcp/dist/index.js"]
+      "args": ["/FULL/PATH/TO/JustGoingViral-Mcpo/dist/index.js"]
     }
   }
 }
 ```
 
-**🚨 IMPORTANT:** Replace `/FULL/PATH/TO/JustGoingViral-Mcp/` with the actual path where you cloned the repository.
+**🚨 IMPORTANT:** Replace `/FULL/PATH/TO/JustGoingViral-Mcpo/` with the actual path where you cloned the repository.
 
 ### 3. **Find Your Full Path**
 
-To get the exact path, run this in your JustGoingViral-Mcp directory:
+To get the exact path, run this in your JustGoingViral-Mcpo directory:
 ```bash
 pwd
 ```
@@ -95,7 +95,7 @@ pwd
   "mcpServers": {
     "JustGoingViral": {
       "command": "node",
-      "args": ["/Users/yourname/JustGoingViral-Mcp/dist/index.js"]
+      "args": ["/Users/yourname/JustGoingViral-Mcpo/dist/index.js"]
     }
   }
 }
