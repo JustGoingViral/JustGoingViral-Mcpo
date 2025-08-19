@@ -65,6 +65,11 @@ vi.mock('../src/thirdPartyWrappers/serverHealth.js', () => ({
   handleServerHealthTool: vi.fn(async (name: string) => stubResult(`health:${name}`)),
 }));
 
+vi.mock('../src/thirdPartyWrappers/goHighLevel.js', () => ({
+  goHighLevelTools: [],
+  handleGoHighLevelTool: vi.fn(async (name: string) => stubResult(`ghl:${name}`)),
+}));
+
 let callToolHandler: any;
 
 beforeAll(async () => {
@@ -99,5 +104,13 @@ describe('Apple wrapper', () => {
     const result = await callTool('notes', { operation: 'list' });
     expect(result.isError).toBe(false);
     expect(result.content[0].text).toBe('apple:notes');
+  });
+});
+
+describe('GoHighLevel wrapper', () => {
+  it('calls GoHighLevel contact tool', async () => {
+    const result = await callTool('ghl_get_contact', { contactId: 'test123', locationId: 'loc123' });
+    expect(result.isError).toBe(false);
+    expect(result.content[0].text).toBe('ghl:ghl_get_contact');
   });
 });

@@ -20,6 +20,7 @@ import { handleModelcontextprotocolServerFilesystemTool } from "./thirdPartyWrap
 import { handleEvolutionaryIntelligenceTool } from "./thirdPartyWrappers/evolutionaryIntelligence.js";
 import { handleJustGoingViralTool } from "./thirdPartyWrappers/justGoingViral.js";
 import { handleServerHealthTool } from "./thirdPartyWrappers/serverHealth.js";
+import { handleGoHighLevelTool } from "./thirdPartyWrappers/goHighLevel.js";
 
 console.error("Starting JustGoingViral consolidated MCP server...");
 
@@ -218,6 +219,24 @@ server.setRequestHandler(CallToolRequestSchema, async (request) => {
 
     if (justGoingViralToolNames.includes(name)) {
       return await handleJustGoingViralTool(name, args);
+    }
+
+    // Route GoHighLevel tools
+    const goHighLevelToolNames = [
+      'ghl_get_contact', 'ghl_create_contact', 'ghl_update_contact', 'ghl_delete_contact', 'ghl_search_contacts',
+      'ghl_add_tags_to_contact', 'ghl_remove_tags_from_contact', 'ghl_get_opportunity', 'ghl_create_opportunity',
+      'ghl_update_opportunity', 'ghl_delete_opportunity', 'ghl_search_opportunities', 'ghl_get_calendar',
+      'ghl_get_appointments', 'ghl_create_appointment', 'ghl_update_appointment', 'ghl_delete_appointment',
+      'ghl_get_conversations', 'ghl_send_message', 'ghl_get_messages', 'ghl_get_campaigns',
+      'ghl_add_contact_to_campaign', 'ghl_remove_contact_from_campaign', 'ghl_get_workflows',
+      'ghl_add_contact_to_workflow', 'ghl_remove_contact_from_workflow', 'ghl_get_custom_fields',
+      'ghl_create_custom_field', 'ghl_update_custom_field', 'ghl_delete_custom_field', 'ghl_get_forms',
+      'ghl_get_form_submissions', 'ghl_get_users', 'ghl_get_location', 'ghl_update_location',
+      'ghl_get_pipelines', 'ghl_get_products', 'ghl_upload_media', 'ghl_get_social_media_accounts'
+    ];
+
+    if (goHighLevelToolNames.includes(name)) {
+      return await handleGoHighLevelTool(name, args);
     }
 
     // Handle Apple MCP tools (simplified version - focusing on key tools)

@@ -14,10 +14,12 @@ import { mondayTools } from './thirdPartyWrappers/monday.js';
 import { evolutionaryIntelligenceTools } from './thirdPartyWrappers/evolutionaryIntelligence.js';
 import { serverHealthTools } from './thirdPartyWrappers/serverHealth.js';
 import { modelcontextprotocolServerFilesystemTools } from './thirdPartyWrappers/modelcontextprotocolServerFilesystem.js';
+import { goHighLevelTools } from './thirdPartyWrappers/goHighLevel.js';
 
 import { modelcontextprotocolServerMemoryTools } from './thirdPartyWrappers/modelcontextprotocolServerMemory.js';
 
 const tools = [
+  ...goHighLevelTools,
   ...modelcontextprotocolServerMemoryTools,
   ...modelcontextprotocolServerFilesystemTools,
   ...localAppleTools,

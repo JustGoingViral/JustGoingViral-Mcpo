@@ -1,8 +1,8 @@
 # 🚀 **STOP!** Are You Still Juggling 10+ Different AI Tools and Servers? 
 
-## **Introducing JustGoingViral: The ULTIMATE 69-in-1 MCP Server That's About to 10X Your AI Productivity!**
+## **Introducing JustGoingViral: The ULTIMATE 108-in-1 MCP Server That's About to 10X Your AI Productivity!**
 
-**✨ What if I told you that in the next 5 minutes, you could have access to 69 powerful AI tools, all perfectly integrated, all working together seamlessly, and all controlled from ONE single interface that works with ANY AI system?**
+**✨ What if I told you that in the next 5 minutes, you could have access to 108 powerful AI tools, all perfectly integrated, all working together seamlessly, and all controlled from ONE single interface that works with ANY AI system?**
 
 ### 🔥 **Here's What Industry Leaders Are Already Discovering:**
 
@@ -14,7 +14,7 @@
 
 ### **💎 Why Smart Developers Are Making The Switch:**
 
-✅ **69 Premium Tools** - Everything from filesystem operations to evolutionary AI thinking
+✅ **108 Premium Tools** - Everything from filesystem operations to evolutionary AI thinking + complete GoHighLevel CRM integration
 ✅ **Universal MCP Compatibility** - Works with ANY MCP client: Claude Desktop, Cline, ChatGPT connectors, custom AI systems  
 ✅ **Zero Configuration Headaches** - Plug-and-play with all MCP-compatible platforms  
 ✅ **Apple Ecosystem Mastery** - Native macOS integration others charge premium for  
@@ -33,7 +33,7 @@ While others are still manually switching between tools, YOU could be operating 
 
 # JustGoingViral MCP Server
 
-**Technical Overview:** A mega-consolidated MCP server compatible with ANY MCP client (Claude Desktop, Cline, ChatGPT connectors, custom AI systems) that integrates 69 tools from 10+ specialized servers into a single, powerful interface.
+**Technical Overview:** A mega-consolidated MCP server compatible with ANY MCP client (Claude Desktop, Cline, ChatGPT connectors, custom AI systems) that integrates 108 tools from 11+ specialized servers into a single, powerful interface.
 
 ## 🚀 Quick Setup (One Command)
 
@@ -49,9 +49,35 @@ This will:
 3. Make the setup script executable
 4. Run the automated setup (installs dependencies, builds project, shows instructions)
 
-## 🌟 Features - 69 Powerful Tools
+## 🌟 Features - 108 Powerful Tools
 
-**JustGoingViral is a mega-consolidated MCP server providing 69 tools across 10+ categories:**
+**JustGoingViral is a mega-consolidated MCP server providing 108 tools across 11+ categories:**
+
+### 🚀 GoHighLevel CRM & Marketing (39 tools) - **NEW!**
+**Contact Management:**
+- `ghl_get_contact`, `ghl_create_contact`, `ghl_update_contact`, `ghl_delete_contact`, `ghl_search_contacts`
+- `ghl_add_tags_to_contact`, `ghl_remove_tags_from_contact`
+
+**Opportunities & Pipeline:**
+- `ghl_get_opportunity`, `ghl_create_opportunity`, `ghl_update_opportunity`, `ghl_delete_opportunity`, `ghl_search_opportunities`
+
+**Calendar & Appointments:**
+- `ghl_get_calendar`, `ghl_get_appointments`, `ghl_create_appointment`, `ghl_update_appointment`, `ghl_delete_appointment`
+
+**Messaging & Conversations:**
+- `ghl_get_conversations`, `ghl_send_message`, `ghl_get_messages`
+
+**Campaigns & Workflows:**
+- `ghl_get_campaigns`, `ghl_add_contact_to_campaign`, `ghl_remove_contact_from_campaign`
+- `ghl_get_workflows`, `ghl_add_contact_to_workflow`, `ghl_remove_contact_from_workflow`
+
+**Custom Fields & Forms:**
+- `ghl_get_custom_fields`, `ghl_create_custom_field`, `ghl_update_custom_field`, `ghl_delete_custom_field`
+- `ghl_get_forms`, `ghl_get_form_submissions`
+
+**Admin & Media:**
+- `ghl_get_users`, `ghl_get_location`, `ghl_update_location`, `ghl_get_pipelines`
+- `ghl_get_products`, `ghl_upload_media`, `ghl_get_social_media_accounts`
 
 ### 🍎 Apple Ecosystem Integration (8 tools)
 - `contacts`, `notes`, `messages`, `mail`, `reminders`, `webSearch`, `calendar`, `maps`
@@ -95,7 +121,7 @@ This will:
 ### 🩺 Server Health Monitoring (1 tool)
 - `server_health` - Check server uptime, memory usage, and load averages
 
-**Total: 69 tools providing comprehensive automation, development, and productivity capabilities**
+**Total: 108 tools providing comprehensive automation, development, CRM, marketing, and productivity capabilities**
 
 ## Installation
 
