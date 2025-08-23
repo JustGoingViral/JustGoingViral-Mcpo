@@ -213,14 +213,9 @@ server.setRequestHandler(CallToolRequestSchema, async (request) => {
       return await handleServerHealthTool(name, args);
     }
 
-    // Route Evolutionary Intelligence tools
-    if (name === 'eesystem') {
+    // Route Evolutionary Intelligence tools (legacy)
+    if (name === 'evolutionaryintelligence') {
       return await handleEvolutionaryIntelligenceTool(name, args);
-    }
-
-    // Route GoHighLevel tools (existing simple integration)
-    if (name.startsWith('ghl_') || name === 'ghl_setup_credentials') {
-      return await handleGoHighLevelTool(name, args);
     }
 
     // Route NEW INTEGRATIONS - Complete 200+ tools restoration
@@ -245,7 +240,7 @@ server.setRequestHandler(CallToolRequestSchema, async (request) => {
       return await handleEesystemTool(name, args);
     }
 
-    // Route GoHighLevel Full System tools (100+ tools across 17 categories)
+    // Route GoHighLevel Full System tools (100+ tools across 17 categories) - PRIORITY ROUTING
     // This includes all comprehensive GHL categories: association, blog, calendar, contact, 
     // custom-field-v2, email-isv, email, invoices, location, media, objects, opportunity, 
     // payments, products, social-media, surveys, workflows
@@ -258,6 +253,11 @@ server.setRequestHandler(CallToolRequestSchema, async (request) => {
         name.includes('survey') || name.includes('workflow')
     )) {
       return await handleGoHighLevelFullTool(name, args);
+    }
+
+    // Route GoHighLevel tools (existing simple integration - fallback)
+    if (name.startsWith('ghl_') || name === 'ghl_setup_credentials') {
+      return await handleGoHighLevelTool(name, args);
     }
 
     // Route JustGoingViral tools

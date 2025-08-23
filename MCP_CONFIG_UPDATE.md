@@ -18,7 +18,7 @@ You need to update your Cline MCP settings to change the path from the old locat
 ```json
 "JustGoingViral": {
   "command": "node",
-  "args": ["/Users/dbsal/Documents/GitHub/JustGoingViral/dist/index.js"]
+  "args": ["/Users/dbsal/Documents/GitHub/JustGoingViral-Mcpo/dist/index.js"]
 }
 ```
 
