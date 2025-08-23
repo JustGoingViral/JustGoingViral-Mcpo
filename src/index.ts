@@ -20,6 +20,13 @@ import { handleModelcontextprotocolServerFilesystemTool } from "./thirdPartyWrap
 import { handleEvolutionaryIntelligenceTool } from "./thirdPartyWrappers/evolutionaryIntelligence.js";
 import { handleJustGoingViralTool } from "./thirdPartyWrappers/justGoingViral.js";
 import { handleServerHealthTool } from "./thirdPartyWrappers/serverHealth.js";
+import { handleGoHighLevelTool } from "./thirdPartyWrappers/gohighlevel.js";
+// New tool ecosystem handlers - Complete 200+ tools restoration
+import { handleWhatsAppTool } from "./thirdPartyWrappers/whatsapp.js";
+import { handleCloudflareTool } from "./thirdPartyWrappers/cloudflare.js";
+import { handleOpenAPITool } from "./thirdPartyWrappers/openapi.js";
+import { handleEesystemTool } from "./thirdPartyWrappers/eesystem.js";
+import { handleGoHighLevelFullTool } from "./thirdPartyWrappers/gohighlevelFull.js";
 
 console.error("Starting JustGoingViral consolidated MCP server...");
 
@@ -209,6 +216,48 @@ server.setRequestHandler(CallToolRequestSchema, async (request) => {
     // Route Evolutionary Intelligence tools
     if (name === 'eesystem') {
       return await handleEvolutionaryIntelligenceTool(name, args);
+    }
+
+    // Route GoHighLevel tools (existing simple integration)
+    if (name.startsWith('ghl_') || name === 'ghl_setup_credentials') {
+      return await handleGoHighLevelTool(name, args);
+    }
+
+    // Route NEW INTEGRATIONS - Complete 200+ tools restoration
+    
+    // Route WhatsApp tools (12 tools)
+    if (name.startsWith('whatsapp_')) {
+      return await handleWhatsAppTool(name, args);
+    }
+
+    // Route Cloudflare tools (15 tools)
+    if (name.startsWith('cloudflare_')) {
+      return await handleCloudflareTool(name, args);
+    }
+
+    // Route OpenAPI tools (5 tools)
+    if (name.startsWith('openapi_')) {
+      return await handleOpenAPITool(name, args);
+    }
+
+    // Route EESystem evolutionary intelligence tool (1 tool)
+    if (name === 'eesystem') {
+      return await handleEesystemTool(name, args);
+    }
+
+    // Route GoHighLevel Full System tools (100+ tools across 17 categories)
+    // This includes all comprehensive GHL categories: association, blog, calendar, contact, 
+    // custom-field-v2, email-isv, email, invoices, location, media, objects, opportunity, 
+    // payments, products, social-media, surveys, workflows
+    if (name.startsWith('ghl_') && (
+        name.includes('association') || name.includes('blog') || name.includes('calendar') ||
+        name.includes('contact') || name.includes('custom_field_v2') || name.includes('email_isv') ||
+        name.includes('email') || name.includes('invoice') || name.includes('location') ||
+        name.includes('media') || name.includes('object') || name.includes('opportunity') ||
+        name.includes('payment') || name.includes('product') || name.includes('social') ||
+        name.includes('survey') || name.includes('workflow')
+    )) {
+      return await handleGoHighLevelFullTool(name, args);
     }
 
     // Route JustGoingViral tools
