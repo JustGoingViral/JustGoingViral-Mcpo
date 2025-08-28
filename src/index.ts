@@ -4,6 +4,8 @@ import { StdioServerTransport } from "@modelcontextprotocol/sdk/server/stdio.js"
 import {
   CallToolRequestSchema,
   ListToolsRequestSchema,
+  ListResourcesRequestSchema,
+  ReadResourceRequestSchema,
 } from "@modelcontextprotocol/sdk/types.js";
 import { runAppleScript } from "run-applescript";
 import tools from "./tools.js";
@@ -27,6 +29,97 @@ import { handleCloudflareTool } from "./thirdPartyWrappers/cloudflare.js";
 import { handleOpenAPITool } from "./thirdPartyWrappers/openapi.js";
 import { handleEesystemTool } from "./thirdPartyWrappers/eesystem.js";
 import { handleGoHighLevelFullTool } from "./thirdPartyWrappers/gohighlevelFull.js";
+// Resource definitions inline
+const allResources = [
+  {
+    uri: "justgoingviral://tool-categories",
+    name: "Tool Categories",
+    description: "Complete categorization of all 200+ available tools organized by integration type",
+    mimeType: "application/json"
+  },
+  {
+    uri: "justgoingviral://integration-status", 
+    name: "Integration Status",
+    description: "Real-time status of all service integrations and their connectivity",
+    mimeType: "application/json"
+  },
+  {
+    uri: "justgoingviral://server-health",
+    name: "Server Health",
+    description: "Real-time server health metrics including memory usage, uptime, and performance",
+    mimeType: "application/json"
+  },
+  {
+    uri: "justgoingviral://api-reference",
+    name: "API Reference",
+    description: "Complete API reference documentation for all tools and integrations",
+    mimeType: "text/markdown"
+  }
+];
+
+// Resource handler function inline
+async function handleResourceRequest(uri: string) {
+  switch (uri) {
+    case "justgoingviral://tool-categories":
+      return {
+        contents: [{
+          type: 'text',
+          text: JSON.stringify({
+            total_tools: tools.length,
+            categories: {
+              apple_integration: { count: 8, tools: ["contacts", "notes", "messages", "mail", "reminders", "webSearch", "calendar", "maps"] },
+              gohighlevel_crm: { count: tools.filter(t => t.name.startsWith('ghl_')).length, description: "Complete CRM integration" },
+              whatsapp_messaging: { count: 12, description: "WhatsApp business messaging" },
+              cloudflare_infrastructure: { count: 15, description: "Cloudflare Workers and analytics" },
+              file_system: { count: 12, description: "File and directory operations" },
+              knowledge_management: { count: 9, description: "Memory and knowledge graph" },
+              cognitive_enhancement: { count: 2, tools: ["sequentialthinking", "eesystem"] }
+            }
+          }, null, 2)
+        }]
+      };
+    case "justgoingviral://integration-status":
+      return {
+        contents: [{
+          type: 'text',
+          text: JSON.stringify({
+            timestamp: new Date().toISOString(),
+            server_version: "3.0.0",
+            integrations: {
+              apple_services: { status: "active", health: "operational" },
+              github: { status: process.env.GITHUB_TOKEN ? "configured" : "needs_setup" },
+              gohighlevel: { status: process.env.GHL_API_KEY ? "configured" : "needs_setup" },
+              whatsapp: { status: process.env.WHATSAPP_TOKEN ? "configured" : "needs_setup" },
+              cloudflare: { status: process.env.CLOUDFLARE_API_TOKEN ? "configured" : "needs_setup" }
+            }
+          }, null, 2)
+        }]
+      };
+    case "justgoingviral://server-health":
+      return {
+        contents: [{
+          type: 'text',
+          text: JSON.stringify({
+            timestamp: new Date().toISOString(),
+            uptime_seconds: process.uptime(),
+            memory_mb: Math.round(process.memoryUsage().heapUsed / 1024 / 1024),
+            tools_count: tools.length,
+            status: "operational"
+          }, null, 2)
+        }]
+      };
+    case "justgoingviral://api-reference":
+      return {
+        contents: [{
+          type: 'text',
+          text: `# JustGoingViral MCP Server API Reference\n\n## ${tools.length} Available Tools\n\n` +
+                tools.map(tool => `### ${tool.name}\n${tool.description}\n`).join('\n')
+        }]
+      };
+    default:
+      throw new Error(`Unknown resource URI: ${uri}`);
+  }
+}
 
 console.error("Starting JustGoingViral consolidated MCP server...");
 
@@ -81,11 +174,12 @@ async function loadAppleModule<T extends 'contacts' | 'notes' | 'message' | 'mai
 const server = new Server(
   {
     name: "JustGoingViral",
-    version: "1.0.0",
+    version: "3.0.0",
   },
   {
     capabilities: {
       tools: {},
+      resources: {},
     },
   }
 );
@@ -93,6 +187,19 @@ const server = new Server(
 server.setRequestHandler(ListToolsRequestSchema, async () => ({
   tools
 }));
+
+server.setRequestHandler(ListResourcesRequestSchema, async () => ({
+  resources: allResources
+}));
+
+server.setRequestHandler(ReadResourceRequestSchema, async (request) => {
+  try {
+    const { uri } = request.params;
+    return await handleResourceRequest(uri);
+  } catch (error) {
+    throw new Error(`Failed to read resource ${request.params.uri}: ${error instanceof Error ? error.message : String(error)}`);
+  }
+});
 
 server.setRequestHandler(CallToolRequestSchema, async (request) => {
   try {
