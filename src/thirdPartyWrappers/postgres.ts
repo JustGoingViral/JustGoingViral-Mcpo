@@ -5,6 +5,10 @@
 
 import { Tool } from '@modelcontextprotocol/sdk/types.js';
 
+interface QueryArgs {
+  sql: string;
+}
+
 // Define tool schemas that match the postgres server
 export const postgresTools: Tool[] = [
   {
@@ -20,7 +24,7 @@ export const postgresTools: Tool[] = [
 ];
 
 // Handler for postgres tools
-export async function handlePostgresTool(name: string, args: any) {
+export async function handlePostgresTool(name: string, args: QueryArgs) {
   try {
     // @ts-ignore - Dynamic import resolved at runtime
     const { createServer } = await import('@modelcontextprotocol/server-postgres');

@@ -5,6 +5,96 @@
 
 import { Tool } from '@modelcontextprotocol/sdk/types.js';
 
+interface CreateOrUpdateFileArgs {
+  owner: string;
+  repo: string;
+  path: string;
+  content: string;
+  message: string;
+  branch: string;
+  sha?: string;
+}
+
+interface SearchRepositoriesArgs {
+  query: string;
+  page?: number;
+  perPage?: number;
+}
+
+interface CreateRepositoryArgs {
+  name: string;
+  description?: string;
+  private?: boolean;
+  autoInit?: boolean;
+}
+
+interface GetFileContentsArgs {
+  owner: string;
+  repo: string;
+  path: string;
+  branch?: string;
+}
+
+interface PushFilesArgs {
+  owner: string;
+  repo: string;
+  branch: string;
+  files: { path: string; content: string }[];
+  message: string;
+}
+
+interface CreateIssueArgs {
+  owner: string;
+  repo: string;
+  title: string;
+  body?: string;
+  assignees?: string[];
+  milestone?: number;
+  labels?: string[];
+}
+
+interface CreatePullRequestArgs {
+  owner: string;
+  repo: string;
+  title: string;
+  head: string;
+  base: string;
+  body?: string;
+  draft?: boolean;
+  maintainer_can_modify?: boolean;
+}
+
+interface ListIssuesArgs {
+  owner: string;
+  repo: string;
+  direction?: 'asc' | 'desc';
+  labels?: string[];
+  page?: number;
+  per_page?: number;
+  since?: string;
+  sort?: 'created' | 'updated' | 'comments';
+  state?: 'open' | 'closed' | 'all';
+}
+
+interface SearchCodeArgs {
+  q: string;
+  order?: 'asc' | 'desc';
+  page?: number;
+  per_page?: number;
+}
+
+type GitHubToolArgsMap = {
+  create_or_update_file: CreateOrUpdateFileArgs;
+  search_repositories: SearchRepositoriesArgs;
+  create_repository: CreateRepositoryArgs;
+  get_file_contents: GetFileContentsArgs;
+  push_files: PushFilesArgs;
+  create_issue: CreateIssueArgs;
+  create_pull_request: CreatePullRequestArgs;
+  list_issues: ListIssuesArgs;
+  search_code: SearchCodeArgs;
+};
+
 // Define tool schemas that match the GitHub server
 export const githubTools: Tool[] = [
   {
@@ -182,7 +272,7 @@ export const githubTools: Tool[] = [
 ];
 
 // Handler for GitHub tools
-export async function handleGitHubTool(name: string, args: any) {
+export async function handleGitHubTool<T extends keyof GitHubToolArgsMap>(name: T, args: GitHubToolArgsMap[T]) {
   try {
     // @ts-ignore - Dynamic import resolved at runtime
     const { createServer } = await import('@modelcontextprotocol/server-github');
