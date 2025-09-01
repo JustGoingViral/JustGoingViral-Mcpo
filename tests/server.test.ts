@@ -6,12 +6,12 @@ const stubResult = (label: string) => ({
 });
 
 vi.mock('../src/thirdPartyWrappers/github.js', () => ({
-  githubTools: [],
+  githubTools: [{ name: 'search_repositories', description: '', inputSchema: { type: 'object', properties: {} } }],
   handleGitHubTool: vi.fn(async (name: string) => stubResult(`github:${name}`)),
 }));
 
 vi.mock('../src/thirdPartyWrappers/justGoingViral.js', () => ({
-  justGoingViralTools: [],
+  justGoingViralTools: [{ name: 'notes', description: '', inputSchema: { type: 'object', properties: {} } }],
   handleJustGoingViralTool: vi.fn(async (name: string) => stubResult(`apple:${name}`)),
 }));
 

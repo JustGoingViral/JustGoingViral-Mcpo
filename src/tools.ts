@@ -2,7 +2,7 @@
  * Unified tool registry for the JustGoingViral server.
  */
 
-import localAppleTools from './utils/tools.js'; // Apple MCP utils
+import { justGoingViralTools } from './thirdPartyWrappers/justGoingViral.js';
 import { filesystemTools } from './thirdPartyWrappers/filesystem.js';
 import { memoryTools } from './thirdPartyWrappers/memory.js';
 import { githubTools } from './thirdPartyWrappers/github.js';
@@ -20,7 +20,7 @@ import { modelcontextprotocolServerMemoryTools } from './thirdPartyWrappers/mode
 const tools = [
   ...modelcontextprotocolServerMemoryTools,
   ...modelcontextprotocolServerFilesystemTools,
-  ...localAppleTools,
+  ...justGoingViralTools,
   ...filesystemTools,
   ...memoryTools,
   ...githubTools,
