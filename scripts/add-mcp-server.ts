@@ -2,6 +2,8 @@ import { execSync } from 'child_process';
 import fs from 'fs-extra';
 import path, { dirname } from 'path';
 import { fileURLToPath } from 'url';
+import { parse, print, types } from 'recast';
+import tsParser from 'recast/parsers/typescript.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
@@ -102,50 +104,37 @@ export async function handle${camelCaseServerName.charAt(0).toUpperCase() + came
     }
   }
 
-  // 5. Update the main tools.ts file
-  const mainToolsPath = path.join(__dirname, '../src/tools.ts');
-  let mainToolsContent = fs.readFileSync(mainToolsPath, 'utf-8');
-  mainToolsContent = mainToolsContent.replace(
-    'const tools = [',
-    `import { ${camelCaseServerName}Tools } from './thirdPartyWrappers/${camelCaseServerName}.js';\n\nconst tools = [\n  ...${camelCaseServerName}Tools,`
-  );
-  fs.writeFileSync(mainToolsPath, mainToolsContent);
+  // 5. Update plugin registry using AST
+  const pluginsPath = path.join(__dirname, '../src/plugins.ts');
+  const pluginSource = fs.readFileSync(pluginsPath, 'utf-8');
+  const ast = parse(pluginSource, { parser: tsParser });
 
-  // 6. Update the main index.ts file
-  const mainIndexPath = path.join(__dirname, '../src/index.ts');
-  let mainIndexContent = fs.readFileSync(mainIndexPath, 'utf-8');
-  mainIndexContent = mainIndexContent.replace(
-    'import { handleMondayTool } from "./thirdPartyWrappers/monday.js";',
-    `import { handleMondayTool } from "./thirdPartyWrappers/monday.js";\nimport { handle${camelCaseServerName.charAt(0).toUpperCase() + camelCaseServerName.slice(1)}Tool } from "./thirdPartyWrappers/${camelCaseServerName}.js";`
-  );
-  mainIndexContent = mainIndexContent.replace(
-    '// Route Monday.com tools',
-    `// Route ${serverName} tools
-    const ${camelCaseServerName}ToolNames = [
-      // TODO: Add tool names here
-    ];
+  const capitalized = camelCaseServerName.charAt(0).toUpperCase() + camelCaseServerName.slice(1);
+  const importAst = parse(
+    `import { ${camelCaseServerName}Tools, handle${capitalized}Tool } from './thirdPartyWrappers/${camelCaseServerName}.js';`,
+    { parser: tsParser }
+  ).program.body[0];
+  ast.program.body.unshift(importAst);
 
-    if (${camelCaseServerName}ToolNames.includes(name)) {
-      return await handle${camelCaseServerName.charAt(0).toUpperCase() + camelCaseServerName.slice(1)}Tool(name, args);
+  types.visit(ast, {
+    visitVariableDeclaration(path) {
+      const node = path.node;
+      if (
+        node.declarations.length > 0 &&
+        node.declarations[0].id.type === 'Identifier' &&
+        node.declarations[0].id.name === 'allPlugins'
+      ) {
+        const elements = (node.declarations[0].init as any).elements;
+        elements.push(
+          parse(`{ name: '${camelCaseServerName}', tools: ${camelCaseServerName}Tools, handler: handle${capitalized}Tool }`, { parser: tsParser }).program.body[0].expression
+        );
+        return false;
+      }
+      this.traverse(path);
     }
+  });
 
-    // Route Monday.com tools`
-  );
-  fs.writeFileSync(mainIndexPath, mainIndexContent);
-
-  // 7. Populate the tool names in index.ts
-  if (fs.existsSync(toolsFilePath)) {
-    const toolsFileContent = fs.readFileSync(toolsFilePath, 'utf-8');
-    const toolNames = (toolsFileContent.match(/name: "(\w+)"/g) || []).map(match => match.replace(/name: "(\w+)"/, '$1'));
-    if (toolNames.length > 0) {
-      let mainIndexContent = fs.readFileSync(mainIndexPath, 'utf-8');
-      mainIndexContent = mainIndexContent.replace(
-        '// TODO: Add tool names here',
-        `'${toolNames.join("', '")}'`
-      );
-      fs.writeFileSync(mainIndexPath, mainIndexContent);
-    }
-  }
+  fs.writeFileSync(pluginsPath, print(ast).code);
 
 
   // Clean up the temporary directory
